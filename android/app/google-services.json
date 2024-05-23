@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "162230536650",
+    "project_id": "modeltest-2454f",
+    "storage_bucket": "modeltest-2454f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162230536650:android:74437d6df39fbb3957a733",
+        "android_client_info": {
+          "package_name": "com.example.DefeDroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdaB_gusRRajyrp_opCPK-XSxTTe5AJuA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
