@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:DefeDroid/screens/theme.dart'; // Import ThemeNotifier from theme.dart
 
 class MorePage extends StatelessWidget {
-  const MorePage({Key? key});
+  const MorePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +56,7 @@ class MorePage extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        color: theme.textTheme.headline6!.color,
+        color: theme.textTheme.titleLarge!.color,
         fontSize: 20,
         fontFamily: 'Urbanist',
         fontWeight: FontWeight.w800,
@@ -86,7 +86,7 @@ class MorePage extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  color: theme.textTheme.headline6!.color,
+                  color: theme.textTheme.titleLarge!.color,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -95,7 +95,7 @@ class MorePage extends StatelessWidget {
               Text(
                 description,
                 style: TextStyle(
-                  color: theme.textTheme.bodyText1!.color,
+                  color: theme.textTheme.bodyLarge!.color,
                   fontSize: 14,
                 ),
               ),

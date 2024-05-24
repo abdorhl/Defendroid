@@ -95,11 +95,11 @@ class _FavoritePageState extends State<FavoritePage> {
           context: context,
           barrierDismissible: false,
           builder: (context) {
-            return AlertDialog(
-              title: const Text('Scanning in Progress'),
+            return const AlertDialog(
+              title: Text('Scanning in Progress'),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
-                children: const [
+                children: [
                   CircularProgressIndicator(),
                   SizedBox(height: 20),
                   Text('Please wait while the APK is being analyzed.'),
@@ -264,21 +264,6 @@ class _FavoritePageState extends State<FavoritePage> {
             mainAxisSize: MainAxisSize.min,
             children: [
               ElevatedButton(
-                onPressed: _onSelectButtonPressed,
-                style: ElevatedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 80, vertical: 16),
-                  backgroundColor:
-                      Colors.grey, // Grey color to indicate disabled
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
-                child:
-                    const Text('Select', style: TextStyle(color: Colors.white)),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
                 onPressed: _onDownloadButtonPressed,
                 style: ElevatedButton.styleFrom(
                   padding:
@@ -292,6 +277,21 @@ class _FavoritePageState extends State<FavoritePage> {
                   'Go to download',
                   style: TextStyle(color: Colors.white),
                 ),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: _onSelectButtonPressed,
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 80, vertical: 16),
+                  backgroundColor:
+                      Colors.grey, // Grey color to indicate disabled
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child:
+                    const Text('Select', style: TextStyle(color: Colors.white)),
               ),
             ],
           ),

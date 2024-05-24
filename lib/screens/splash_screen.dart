@@ -75,7 +75,7 @@ class _SplashScreenState extends State<SplashScreen>
             const SizedBox(
                 height: 16), //Adjust the spacing between the logo and the text
             const Text(
-              'Defendozer',
+              'Defendroid',
               style: TextStyle(
                 color: Color(0xFFD6A21E), // Color D6A21E
                 fontSize: 32,

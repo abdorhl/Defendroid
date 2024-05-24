@@ -22,7 +22,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
   Widget build(BuildContext context) {
     List<Widget> pages = [
       const HomePage(),
-      FavoritePage(), // Replace this with the appropriate constructor or method call for the FavoritePage class
+      const FavoritePage(), // Replace this with the appropriate constructor or method call for the FavoritePage class
       const SettingsPage(),
       const MorePage(),
     ];
@@ -31,7 +31,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
       extendBody: true,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
-          color: Color(0xFF2B2B2B), // Dark background color
+          color: const Color(0xFF2B2B2B), // Dark background color
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(25),
             topRight: Radius.circular(25),

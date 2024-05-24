@@ -91,8 +91,7 @@ class _CustomListTile extends StatelessWidget {
   const _CustomListTile({
     required this.title,
     required this.icon,
-    this.onTap,
-    this.trailing,
+    this.onTap, this.trailing,
   });
 
   @override

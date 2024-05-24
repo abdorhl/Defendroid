@@ -1,8 +1,5 @@
 import 'dart:async';
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:DefeDroid/nav_bar/search.dart';
 import 'package:DefeDroid/screens/theme.dart';
@@ -27,15 +24,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool _isModelLoaded = false;
+  final bool _isModelLoaded = false;
   bool _isScanning = false;
   late Stopwatch _stopwatch;
   late Timer _timer;
 
   late Interpreter _interpreter; // Declare interpreter
 
-  String _lastAppScanned = "No app scanned yet";
-  List<String> _maliciousInfo = [
+  final String _lastAppScanned = "No app scanned yet";
+  final List<String> _maliciousInfo = [
     "Malicious APK found: Riskware",
     "Suspicious APK detected: Adware",
     "Malicious APK found: Trojan",
@@ -101,22 +98,6 @@ class _HomePageState extends State<HomePage> {
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                   Colors.black.withOpacity(0.3),
-                  BlendMode.darken,
-                ),
-              ),
-            ),
-          ),
-          Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: const AssetImage('assets/mdbab.png'),
-                fit: BoxFit.cover,
-                colorFilter: ColorFilter.mode(
-                  isDarkMode
-                      ? const Color(0xFF2E2E3D).withOpacity(0.8)
-                      : Colors.white.withOpacity(0.8),
                   BlendMode.darken,
                 ),
               ),
@@ -285,34 +266,57 @@ class _HomePageState extends State<HomePage> {
             top: 600, // Adjusted this value to position the cards below the circle
             left: 20,
             right: 20,
-            child: Column(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: MediaQuery.of(context).size.width - 40,
-                  padding: const EdgeInsets.all(16.0),
-                  margin: const EdgeInsets.only(bottom: 16.0),
-                  decoration: BoxDecoration(
-                    color: isDarkMode
-                        ? const Color.fromARGB(255, 54, 54, 54)
-                        : Colors.white,
-                    borderRadius: BorderRadius.circular(12),
-                    border: Border.all(
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => HistoryPage()),
+                    );
+                  },
+                  child: Container(
+                    width: (MediaQuery.of(context).size.width - 60) / 2, // Square width
+                    height: (MediaQuery.of(context).size.width - 60) / 2, // Square height
+                    padding: const EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(
                       color: isDarkMode
-                          ? const Color(0xFF242424)
-                          : Colors.grey[300]!,
-                      width: 1,
+                          ? const Color.fromARGB(255, 54, 54, 54)
+                          : Colors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(
+                        color: isDarkMode
+                            ? const Color(0xFF242424)
+                            : Colors.grey[300]!,
+                        width: 1,
+                      ),
                     ),
-                  ),
-                  child: Text(
-                    'Last app scanned: $_lastAppScanned',
-                    style: TextStyle(
-                      color: isDarkMode ? Colors.white : Colors.black,
-                      fontSize: 16,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.history,
+                          color: isDarkMode ? Colors.white : Colors.black,
+                          size: 40,
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Last app scanned:\n$_lastAppScanned',
+                          style: TextStyle(
+                            color: isDarkMode ? Colors.white : Colors.black,
+                            fontSize: 16,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
                   ),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width - 40,
+                  width: (MediaQuery.of(context).size.width - 60) / 2, // Square width
+                  height: (MediaQuery.of(context).size.width - 60) / 2, // Square height
                   padding: const EdgeInsets.all(16.0),
                   decoration: BoxDecoration(
                     color: isDarkMode
@@ -326,18 +330,47 @@ class _HomePageState extends State<HomePage> {
                       width: 1,
                     ),
                   ),
-                  child: Text(
-                    _maliciousInfo[_currentInfoIndex],
-                    style: TextStyle(
-                      color: isDarkMode ? Colors.white : Colors.black,
-                      fontSize: 16,
-                    ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.bug_report,
+                        color: isDarkMode ? Colors.white : Colors.black,
+                        size: 40,
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        _maliciousInfo[_currentInfoIndex],
+                        style: TextStyle(
+                          color: isDarkMode ? Colors.white : Colors.black,
+                          fontSize: 16,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+
+class HistoryPage extends StatelessWidget {
+  const HistoryPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Scan History'),
+      ),
+      body: Center(
+        child: const Text('History of scanned apps will be shown here.'),
       ),
     );
   }
